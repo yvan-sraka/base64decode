@@ -14,7 +14,8 @@ fn base64decode(input: String) -> String {
                 'a' ..= 'z' => ascii + LOWERCASE_OFFSET,
                 'A' ..= 'Z' => ascii + UPPERCASE_OFFSET,
                 '+' => 62,
-                '/' => 63
+                '/' => 63,
+                _   => 0
             };
             format!("{:#08b}", convert)[2..].to_string()        //convert indices to binary format and remove the two first digits
         })
@@ -33,10 +34,13 @@ fn base64decode(input: String) -> String {
 }
  
 fn main() {
-    let input = String::new();
-    std::io::stdin().read_line(input).unwrap();
+    let mut input = String::new();
+    std::io::stdin().read_line(&mut input).unwrap();
     println!("Input: {}", input);
  
     let output = base64decode(input);
     println!("Output: {}", output);
 }
+//Input: RW4gYmlvbG9naWUgZGUgbCfDqXZvbHV0aW9uLCBsYSBjYXJjaW5pc2F0aW9uIGVzdCB1biBleGVtcGxlIGRlIGNvbnZlcmdlbmNlIMOpdm9sdXRpdmUsIGFtZW5hbnQgcGx1c2lldXJzIGVzcMOoY2VzIGRlIGNydXN0YWPDqXMgbm9uIGFwcGFyZW50w6llcyDDoCDDqXZvbHVlciB2ZXJzIGRlcyBmb3JtZXMgcmVzc2VtYmxhbnQgw6AgZGVzIGNyYWJlcy4gTGUgdGVybWUgZnV0IGludHJvZHVpdCBwYXIgQWxleGFuZGVyIEJvcnJhZGFpbGUsIGxlIGTDqWZpbmlzc2FudCBjb21tZSDCqyB1bmUgZGVzIG5vbWJyZXVzZXMgdGVudGF0aXZlcyBkZSBsYSBOYXR1cmUgcG91ciBjcsOpZXIgdW4gY3JhYmUgwrsuIA==
+
+//Output: En biologie de l'évolution, la carcinisation est un exemple de convergence évolutive, amenant plusieurs espèces de crustacés non apparentées à évoluer vers des formes ressemblant à des crabes. Le terme fut introduit par Alexander Borradaile, le définissant comme « une des nombreuses tentatives de la Nature pour créer un crabe ». 

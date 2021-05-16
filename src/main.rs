@@ -6,9 +6,6 @@ const NUM_OFFSET: i8 = 52 - 48;
 
 
 fn base64decode(input: String) -> String {
-    println!("INPUT");
-    println!("Input: {}", input);
-
 
     let result = input.trim().chars()
         .filter(|&ch| ch != '=')                                // Filter '=' chars
